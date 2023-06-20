@@ -18,6 +18,10 @@ app.use(express.json());
 app.use(helmet());
 app.use(compression());
 
+app.get('/', (req, res) => {
+  res.status(200);
+  res.send("Welcome to Smart Interior App");
+});
 app.use("/api/categories", categories);
 app.use("/api/listing", listing);
 app.use("/api/listings", listings);
@@ -29,6 +33,6 @@ app.use("/api/expoPushTokens", expoPushTokens);
 app.use("/api/messages", messages);
 
 const port = process.env.PORT || config.get("port");
-app.listen(port, function() {
+app.listen(port, function () {
   console.log(`Server started on port ${port}...`);
 });
